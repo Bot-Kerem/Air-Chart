@@ -33,4 +33,4 @@ target_link_libraries(PROJECT_NAME AirChart)
 
 ## License
 
-[AIR](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+# AIR [![License](https://img.shields.io/github/license/Bot-Kerem/Air-Chart.svg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
