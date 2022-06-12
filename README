@@ -1,1 +1,36 @@
-A simple chart library for c++
+A simple chart library for C++
+
+[![Build Status] 1.0.0
+
+# Installation:
+
+## Build for Linux
+```sh
+git clone https://github.com/Bot-Kerem/Air-Chart.git
+cd Air-Chart
+./build_linux.sh
+```
+
+## Build for Windows
+```bat
+Currently not supported
+```
+
+## Build for Mac
+```bat
+Currently not supported
+```
+
+## CMake
+
+```cmake
+
+find_package(AirChart REQUIRED)
+
+target_link_libraries(PROJECT_NAME AirChart)
+
+```
+
+## License
+
+- AIR License
