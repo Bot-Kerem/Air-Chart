@@ -5,25 +5,25 @@ A simple chart library for C++
 # Installation:
 
 ## Build for Linux
-```sh
+```
 git clone https://github.com/Bot-Kerem/Air-Chart.git
 cd Air-Chart
 ./build_linux.sh
 ```
 
 ## Build for Windows
-```bat
+```
 Currently not supported
 ```
 
 ## Build for Mac
-```bat
+```
 Currently not supported
 ```
 
 ## CMake
 
-```cmake
+```
 
 find_package(AirChart REQUIRED)
 
