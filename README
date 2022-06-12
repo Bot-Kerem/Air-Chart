@@ -1,6 +1,6 @@
 A simple chart library for C++
 
-[![Build Status] 1.0.0
+# Air Chart 1.0.0
 
 # Installation:
 
@@ -33,4 +33,4 @@ target_link_libraries(PROJECT_NAME AirChart)
 
 ## License
 
-- AIR License
+[AIR](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
