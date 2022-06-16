@@ -21,6 +21,8 @@ namespace AirChart
             void setMat4(const char* name, const glm::mat4* ptrValue);
             void setMat3(const char* name, const glm::mat3* ptrValue);
 
+            static Shader* currentShader;
+
         protected:
             unsigned int program;
             int getUniformLocation(const char* varName);

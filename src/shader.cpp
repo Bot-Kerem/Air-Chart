@@ -6,6 +6,8 @@
 
 namespace AirChart
 {
+    Shader* Shader::currentShader = 0;
+
     Shader::Shader(const char* vertexPath, const char* fragmentPath)
     {
         program = glCreateProgram();
@@ -49,6 +51,7 @@ namespace AirChart
 
     void Shader::use()
     {
+        currentShader = this;
         glUseProgram(program);
     }
 
