@@ -17,6 +17,9 @@ namespace AirChart
 
             GLFWwindow* getWindow();
 
+            void setScrollCallback(GLFWscrollfun callback);
+            void setCursor(GLFWcursor* cursor);
+
             static void pollEvents();
             static void init();
             static void terminate();

@@ -55,3 +55,18 @@ void AirChart::Window::terminate()
 {
     glfwTerminate();
 }
+
+void AirChart::Window::setScrollCallback(GLFWscrollfun callback)
+{
+    glfwSetScrollCallback(window, callback);
+}
+
+void AirChart::Window::setCursor(GLFWcursor* cursor)
+{
+    glfwSetCursor(window, cursor);
+}
+
+GLFWwindow* AirChart::Window::getWindow()
+{
+    return window;
+}
