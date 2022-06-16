@@ -1,4 +1,4 @@
-A simple chart library for C++
+An OpenGL chart library for C++
 
 # Air Chart 1.0.0
 
