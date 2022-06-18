@@ -26,6 +26,21 @@ namespace AirChart
     {
         bind();
         glVertexAttribPointer(index, size, GL_FLOAT, GL_FALSE, stride, pointer);
+        enableVertexAttribArray(index);
+    }
+
+    void VertexArray::enableVertexAttribArray(unsigned int index)
+    {
         glEnableVertexAttribArray(index);
+    }
+
+    void VertexArray::vertexAttribPointer(unsigned int index, int size, int stride, const void* pointer, unsigned int type)
+    {
+        glVertexAttribPointer(index, size, GL_FLOAT, GL_FALSE, stride, pointer);
+    }
+
+    void VertexArray::vertexAttribDivisor(unsigned int index, unsigned int divisor)
+    {
+        glVertexAttribDivisor(index, divisor);
     }
 };

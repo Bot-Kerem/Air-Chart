@@ -35,7 +35,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 int main() {
 
     Window::init();
-    Window window(800, 600, "AirChart");
+    Window window(800, 600, "Air Chart");
     window.setScrollCallback(scroll_callback);
 
     GLFWcursor* hand = glfwCreateStandardCursor(GLFW_HAND_CURSOR);
@@ -51,8 +51,6 @@ int main() {
 
     std::vector<float> graph;
 
-    AirChart::Graph::BarGraph bar(&graph, 0.1f, 0.05f, 0.1f);
-
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(0.0f, 15.0f);
@@ -67,6 +65,9 @@ int main() {
     // delta time
     float deltaTime = 0.0f;
     float lastFrame = 0.0f;
+
+
+    AirChart::Graph::BarGraph bar(graph, 0.1f, 0.05f, 0.1f);
 
 
     while(!window.isClosed()) {
@@ -91,7 +92,6 @@ int main() {
                 translate.y -= a.y;
             }
             glfwSetCursor(window.getWindow(), hand);
-
         }
 
         // check plus key
@@ -108,7 +108,6 @@ int main() {
             *bar.width -= 0.02f*deltaTime;
             *bar.height -= 0.02f*deltaTime;
         }
-        
 
         dpos = cpos;
 

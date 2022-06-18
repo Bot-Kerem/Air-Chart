@@ -1,17 +1,21 @@
 #version 460 core
 
 layout (location = 0) in vec2 inPosition;
+layout (location = 1) in float inData;
+layout (location = 2) in int inOrder;
 
 uniform mat3 scale;
-uniform vec3 translate;
 
 uniform mat3 ascale;
 uniform vec3 atranslate;
 
 void main()
 {   
-    const mat3 rscale = scale * ascale;
-    const vec3 rtranslate = translate + atranslate;
+    const float spacing = 0.05f;
+    const float width = 0.1f;
+    const float size = 0.1;
 
-    gl_Position = vec4((vec3(inPosition, 0.0f)*rscale)+rtranslate, 1.0f);
+    vec2 pos = vec2((inPosition.x*width) + (width+spacing)*inOrder, (inPosition.y*inData)*size);
+
+    gl_Position = vec4(vec3(pos, 0.0f)+atranslate, 1.0f);
 }

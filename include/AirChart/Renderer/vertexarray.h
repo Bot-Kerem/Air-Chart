@@ -10,8 +10,11 @@ namespace AirChart
             ~VertexArray();
 
             void bind();
-            void unbind();
+            static void unbind();
             void vertexAttrib(unsigned int index, int size, int stride, const void* pointer, unsigned int type=0x1406);
+            void enableVertexAttribArray(unsigned int index);
+            void vertexAttribPointer(unsigned int index, int size, int stride, const void* pointer, unsigned int type=0x1406);
+            void vertexAttribDivisor(unsigned int index, unsigned int divisor);
 
         protected:
             unsigned int vao;

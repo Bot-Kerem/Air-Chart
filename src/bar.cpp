@@ -33,6 +33,12 @@ namespace AirChart
 
     };
 
+    void Bar::drawInstanced(int count)
+    {
+        VertexArray::bind();
+        glDrawArraysInstanced(GL_TRIANGLES, 0, 6, count);
+    }
+
     void Bar::draw(glm::vec2 scale)
     {
         VertexArray::bind();
@@ -42,15 +48,5 @@ namespace AirChart
         Shader::currentShader->setMat3("scale", &scaleMatrix);
 
         glDrawArrays(GL_TRIANGLES, 0, 6);
-    };
-
-    void Bar::_draw()
-    {
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-    };
-
-    void Bar::_bind()
-    {
-        VertexArray::bind();
     };
 };

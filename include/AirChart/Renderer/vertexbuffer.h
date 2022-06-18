@@ -13,7 +13,7 @@ namespace AirChart
             ~VertexBuffer();
 
             void bind();
-            void unbind();
+            static void unbind();
 
             void bufferData(void* data, signed long int size);
 

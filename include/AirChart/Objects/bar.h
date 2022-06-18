@@ -8,7 +8,7 @@
 
 namespace AirChart
 {
-    class Bar: private VertexArray, VertexBuffer
+    class Bar: protected VertexArray, VertexBuffer
     {
         public:
             Bar();
@@ -16,8 +16,8 @@ namespace AirChart
 
             void draw(glm::vec2 scale);
         protected:
-            void _draw();
-            void _bind();
+            void drawInstanced(int count);
+
     };
 };
 
