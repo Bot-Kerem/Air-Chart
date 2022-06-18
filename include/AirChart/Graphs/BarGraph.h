@@ -2,6 +2,7 @@
 #define AC_GRAPH_H
 
 #include<AirChart/Objects/bar.h>
+#include<AirChart/Renderer/vertexbuffer.h>
 #include<vector>
 
 namespace AirChart 
@@ -12,7 +13,7 @@ namespace AirChart
         {
             public:
 
-                BarGraph(std::vector<float>* graph, float width, float gap, float height);
+                BarGraph(std::vector<float>& graph, float width, float gap, float height);
                 BarGraph(float* graph, unsigned int size, float width, float gap, float height);
                 
                 ~BarGraph();
@@ -24,12 +25,12 @@ namespace AirChart
                 float* gap = new float(0);
                 float* height = new float(0);
 
-                void update(std::vector<float>* graph);
-                void update(float* graph, unsigned int size);
+                //void update(std::vector<float>* graph);
+                //void update(float* graph, unsigned int size);
 
             private:
-                std::vector<float>* graph = nullptr;
-                float* graph_data = nullptr;
+                AirChart::VertexBuffer instance;
+                AirChart::VertexBuffer order_buffer;
                 unsigned int size;
         };
     };
