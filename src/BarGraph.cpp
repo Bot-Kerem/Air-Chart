@@ -11,10 +11,10 @@ namespace AirChart
 {
     namespace Graph 
     {
-        BarGraph::BarGraph(std::vector<float>& graph, float width, float gap, float height)
+        BarGraph::BarGraph(std::vector<float>& graph, float width, float spacing, float height)
         { 
             *(this->width) = width;
-            *(this->gap) = gap;
+            *(this->spacing) = spacing;
             *(this->height) = height;
             size = graph.size();
 
@@ -38,11 +38,10 @@ namespace AirChart
 
         }
 
-        BarGraph::BarGraph(float* graph, unsigned int size, float width, float gap, float height)
+        BarGraph::BarGraph(float* graph, unsigned int size, float width, float spacing, float height)
         {
             *(this->width) = width;
-            *(this->gap) = gap;
-            *(this->height) = 10.0f;
+            *(this->spacing) = spacing;
             *(this->height) = height;
 
             instance.bufferData(graph, sizeof(float)*size);
@@ -61,6 +60,9 @@ namespace AirChart
 
         void BarGraph::draw_graph(glm::vec2 position)
         {
+            Shader::currentShader->setFLoat("spacing", *spacing);
+            Shader::currentShader->setFLoat("width", *width);
+            Shader::currentShader->setFLoat("height", *height);
             Bar::drawInstanced(size);
         }
 

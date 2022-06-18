@@ -67,7 +67,7 @@ int main() {
     float lastFrame = 0.0f;
 
 
-    AirChart::Graph::BarGraph bar(graph, 0.1f, 0.05f, 0.1f);
+    AirChart::Graph::BarGraph bar(graph, 0.05f, 0.01f, 0.1f);
 
 
     while(!window.isClosed()) {
@@ -97,14 +97,14 @@ int main() {
         // check plus key
         if(glfwGetKey(window.getWindow(), GLFW_KEY_KP_ADD) == GLFW_PRESS)
         {
-            *bar.gap += 0.01f*deltaTime;
+            *bar.spacing += 0.01f*deltaTime;
             *bar.width += 0.02f*deltaTime;
             *bar.height += 0.02f*deltaTime;
         }
         // check minus key
         if(glfwGetKey(window.getWindow(), GLFW_KEY_KP_SUBTRACT) == GLFW_PRESS)
         {
-            *bar.gap -= 0.01f*deltaTime;
+            *bar.spacing -= 0.01f*deltaTime;
             *bar.width -= 0.02f*deltaTime;
             *bar.height -= 0.02f*deltaTime;
         }

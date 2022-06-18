@@ -13,8 +13,8 @@ namespace AirChart
         {
             public:
 
-                BarGraph(std::vector<float>& graph, float width, float gap, float height);
-                BarGraph(float* graph, unsigned int size, float width, float gap, float height);
+                BarGraph(std::vector<float>& graph, float width, float spacing, float height);
+                BarGraph(float* graph, unsigned int size, float width, float spacing, float height);
                 
                 ~BarGraph();
                 
@@ -22,7 +22,7 @@ namespace AirChart
                 void draw_graph(glm::vec2 position);
 
                 float* width = new float(0);
-                float* gap = new float(0);
+                float* spacing = new float(0);
                 float* height = new float(0);
 
                 //void update(std::vector<float>* graph);
