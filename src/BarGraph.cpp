@@ -29,7 +29,7 @@ namespace AirChart
             {
                 order.push_back(i);
             }
-            order_buffer.bufferData(order.data(), order.size());
+            order_buffer.bufferData(order.data(), order.size()*sizeof(int));
             Bar::VertexArray::enableVertexAttribArray(2);
             order_buffer.bind();
             Bar::VertexArray::vertexAttribPointer(2, 1, sizeof(int), 0, 0x1404);
