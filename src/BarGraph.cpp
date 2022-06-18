@@ -25,7 +25,7 @@ namespace AirChart
             Bar::VertexArray::vertexAttribDivisor(1, 1);
             AirChart::VertexBuffer::unbind();
             std::vector<int> order;
-            for(int i = 1; i < (graph.size() + 1); i++)
+            for(int i = 0; i < graph.size(); i++)
             {
                 order.push_back(i);
             }
