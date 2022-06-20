@@ -2,6 +2,7 @@
 #include<AirChart/Renderer/ogl.h>
 #include<AirChart/Renderer/shader.h>
 #include<AirChart/Graphs/BarGraph.h>
+#include<AirChart/Graphs/CandleGraph.h>
 
 #include<glm/vec2.hpp>
 #include<glm/mat3x3.hpp>
@@ -14,6 +15,7 @@
 
 #include<GLFW/glfw3.h>
 
+#include<cmath>
 
 using namespace AirChart;
 
@@ -45,20 +47,28 @@ int main() {
 
     GL::init();
 
-    Shader shader("./shaders/shader.vert", "./shaders/shader.frag");
+    Shader shader("./shaders/candlebar.vert", "./shaders/shader.frag");
 
     GL::setClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-    std::vector<float> graph;
+    std::vector<float> open;
+    std::vector<float> close;
+    std::vector<float> low;
+    std::vector<float> high;
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(0.0f, 15.0f);
+    std::uniform_real_distribution<> dis(5.0f, 10.0f);
+    std::uniform_real_distribution<> h(7.2f, 10.0f);
+    std::uniform_real_distribution<> l(5.0f, 8.0f);
 
     for(int i = 0; i < 40; i++)
     {
-        graph.push_back(dis(gen));
-    } 
+        open.push_back(dis(gen));
+        close.push_back(dis(gen));
+        low.push_back(l(gen));
+        high.push_back(h(gen));
+    }
 
     glm::vec2 dpos(0.0f);
 
@@ -67,8 +77,7 @@ int main() {
     float lastFrame = 0.0f;
 
 
-    AirChart::Graph::BarGraph bar(graph, 0.05f, 0.01f, 0.1f);
-
+    AirChart::Graph::CandleGraph candle(open, close, low, high, 0.05f, 0.03f, 0.1f);
 
     while(!window.isClosed()) {
         window.pollEvents();
@@ -97,16 +106,16 @@ int main() {
         // check plus key
         if(glfwGetKey(window.getWindow(), GLFW_KEY_KP_ADD) == GLFW_PRESS)
         {
-            *bar.spacing += 0.01f*deltaTime;
-            *bar.width += 0.02f*deltaTime;
-            *bar.height += 0.02f*deltaTime;
+            *candle.spacing += 0.01f*deltaTime;
+            *candle.width += 0.02f*deltaTime;
+            *candle.height += 0.02f*deltaTime;
         }
         // check minus key
         if(glfwGetKey(window.getWindow(), GLFW_KEY_KP_SUBTRACT) == GLFW_PRESS)
         {
-            *bar.spacing -= 0.01f*deltaTime;
-            *bar.width -= 0.02f*deltaTime;
-            *bar.height -= 0.02f*deltaTime;
+            *candle.spacing -= 0.01f*deltaTime;
+            *candle.width -= 0.02f*deltaTime;
+            *candle.height -= 0.02f*deltaTime;
         }
 
         dpos = cpos;
@@ -119,7 +128,7 @@ int main() {
         shader.setVec3("atranslate", translate);
         shader.setMat3("ascale", &sca);
 
-        bar.draw_graph(glm::vec2(-1.0f, -1.0f));
+        candle.draw();
         
         window.update();
     }
