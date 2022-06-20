@@ -53,12 +53,7 @@ namespace AirChart
 
         BarGraph::~BarGraph(){}
 
-        void BarGraph::draw_graph()
-        {
-
-        }
-
-        void BarGraph::draw_graph(glm::vec2 position)
+        void BarGraph::draw()
         {
             Shader::currentShader->setFLoat("spacing", *spacing);
             Shader::currentShader->setFLoat("width", *width);

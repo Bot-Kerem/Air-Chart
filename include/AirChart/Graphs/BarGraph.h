@@ -9,7 +9,7 @@ namespace AirChart
 {
     namespace Graph 
     {
-        class BarGraph: private Bar
+        class BarGraph: protected Bar
         {
             public:
 
@@ -18,12 +18,11 @@ namespace AirChart
                 
                 ~BarGraph();
                 
-                void draw_graph();
-                void draw_graph(glm::vec2 position);
+                void draw();
 
-                float* width = new float(0);
+                float* width   = new float(0);
                 float* spacing = new float(0);
-                float* height = new float(0);
+                float* height  = new float(0);
 
                 //void update(std::vector<float>* graph);
                 //void update(float* graph, unsigned int size);
