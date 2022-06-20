@@ -10,7 +10,7 @@
 
 namespace AirChart
 {
-    class Line: private VertexArray, VertexBuffer
+    class Line: public VertexArray, VertexBuffer
     {
         public:
             Line(glm::vec2 p1, glm::vec2 p2);
@@ -19,12 +19,8 @@ namespace AirChart
             void draw(glm::vec2 scale);
             void draw();
 
-        protected:
-            void _draw(glm::vec2 scale);
-            void _draw();
-            void _bind();
-            Line(float* array, int size);
-            unsigned int size = 2;
+        //protected:
+            void drawInstanced(int count);
     };
 };
 

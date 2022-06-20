@@ -42,25 +42,10 @@ namespace AirChart
         glDrawArrays(GL_LINES, 0, 2);
     }
 
-    // protected:
-
-    void Line::_draw(glm::vec2 scale)
-    {
-        glm::mat3 scaleMatrix = glm::scale(glm::mat3(1.0f), scale);
-
-        Shader::currentShader->setMat3("scale", &scaleMatrix);
-
-        glDrawArrays(GL_LINES, 0, 2);
-    }
-
-    void Line::_draw()
-    {
-        glDrawArrays(GL_LINES, 0, 2);
-    }
-
-    void Line::_bind()
+    void Line::drawInstanced(int count)
     {
         VertexArray::bind();
+        glDrawArraysInstanced(GL_LINES, 0, 2, count);
     }
 
 };
