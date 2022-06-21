@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.23)
 
 find_package(glfw3 REQUIRED)
-find_package(assimp REQUIRED)
 find_package(glm REQUIRED)
+find_package(nlohmann_json REQUIRED)
 
 if(NOT Freetype_FOUND)
   #message(FATAL_ERROR "Freetype is required to build this project.")
@@ -28,7 +28,7 @@ file(GLOB LIB_SRCS ${LIB_SOURCE_DIR}/*.cpp)
 add_library(AirChart STATIC ${LIB_SRCS})
 
 target_include_directories(AirChart PUBLIC ${LIB_INCLUDE_DIR})
-target_link_libraries(AirChart PUBLIC glfw freetype glm assimp glad)
+target_link_libraries(AirChart PUBLIC glfw freetype glm glad curl nlohmann_json::nlohmann_json)
 
 # TEST
 project(test)
@@ -38,4 +38,4 @@ set(TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 file(GLOB SOURCES ${TEST_DIR}/test/*.cpp)
 
 add_executable(test ${SOURCES})
-target_link_libraries(test AirChart)
+target_link_libraries(test AirChart curl nlohmann_json::nlohmann_json)
