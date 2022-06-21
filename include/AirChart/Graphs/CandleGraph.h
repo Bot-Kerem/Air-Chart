@@ -33,6 +33,7 @@ namespace AirChart
                 AirChart::VertexBuffer high;
                 AirChart::VertexBuffer low;
 
+                AirChart::VertexBuffer color;
                 AirChart::VertexBuffer order;
                 
                 unsigned int size = 0;

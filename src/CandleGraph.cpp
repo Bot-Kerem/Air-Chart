@@ -29,9 +29,16 @@ namespace AirChart
             Bar::VertexArray::vertexAttribDivisor(2, 1);
 
             std::vector<int> order_data;
+            std::vector<int> color_data;
             for (int i = 0; i < size; i++)
             {
                 order_data.push_back(i);
+                if(open[i]>close[i])
+                {
+                    color_data.push_back(0);
+                    continue;
+                }
+                color_data.push_back(1);
             }
 
             this->order.bufferData(order_data.data(), sizeof(int) * size);
@@ -39,6 +46,11 @@ namespace AirChart
             Bar::VertexArray::vertexAttribPointer(3, 1, sizeof(int), 0);
             Bar::VertexArray::vertexAttribDivisor(3, 1);
 
+            this->color.bufferData(color_data.data(), sizeof(int)*size);
+            Bar::VertexArray::enableVertexAttribArray(4);
+            Bar::VertexArray::vertexAttribPointer(4, 1, sizeof(int), 0);
+            Bar::VertexArray::vertexAttribDivisor(4, 1);
+            
             AirChart::VertexBuffer::unbind();
             AirChart::VertexArray::unbind();
 
@@ -57,6 +69,15 @@ namespace AirChart
             line.enableVertexAttribArray(3);
             line.vertexAttribPointer(3, 1, sizeof(int), 0);
             line.vertexAttribDivisor(3, 1);
+
+            this->color.bind();
+            Bar::VertexArray::enableVertexAttribArray(4);
+            Bar::VertexArray::vertexAttribPointer(4, 1, sizeof(int), 0);
+            Bar::VertexArray::vertexAttribDivisor(4, 1);
+            
+
+
+            this->color.bind();
         }
 
         CandleGraph::~CandleGraph()
@@ -72,6 +93,8 @@ namespace AirChart
             Shader::currentShader->setFLoat("width", *width);
             Shader::currentShader->setFLoat("height", *height);
             Shader::currentShader->setFLoat("offset", 0.0f);
+            Shader::currentShader->setVec3("down", glm::vec3(1.0f, 0.0f, 0.0f));
+            Shader::currentShader->setVec3("up", glm::vec3(0.0f, 1.0f, 0.0f));
             Bar::VertexArray::bind();
             Bar::drawInstanced(size);
             Shader::currentShader->setFLoat("offset", (*width)/2);
